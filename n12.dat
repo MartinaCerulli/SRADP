@@ -1,0 +1,48 @@
+#########################################################
+#########   Aircraft deconfliction in 3 dim   ###########
+### n aircraft over a sphere, flying with velocity v ####
+#########################################################
+
+param dim := 3;
+param n := 12; # number of aircraft
+param radius := 7;
+let {i in 1..n} v[i] := 4;
+
+
+let phi[1,1] := 0.0513499929093;
+let phi[1,2] := 0.192322456338;
+let phi[2,1] := 0.258417875135;
+let phi[2,2] := 0.36443702108;
+let phi[3,1] := 0.374901295145;
+let phi[3,2] := 0.414420583874;
+let phi[4,1] := 0.416653781551;
+let phi[4,2] := 0.421554033659;
+let phi[5,1] := 0.511852711272;
+let phi[5,2] := 0.548500629911;
+let phi[6,1] := 0.552228086292;
+let phi[6,2] := 0.614721134383;
+let phi[7,1] := 0.875572689638;
+let phi[7,2] := 0.883512695921;
+let phi[8,1] := 0.924538025821;
+let phi[8,2] := 0.96543273776;
+let phi[9,1] := 0.990030598863;
+let phi[9,2] := 1.05956259913;
+let phi[10,1] := 1.09116607341;
+let phi[10,2] := 1.11900654852;
+let phi[11,1] := 1.33519153712;
+let phi[11,2] := 1.39358927649;
+let phi[12,1] := 1.51825064881;
+let phi[12,2] := 1.52304831425;
+
+
+for {k in K}
+{for {i in A} 
+{if (k=1) then let u[i,k] := cos(phi[i,1])*sin(phi[i,2]); 
+else {if (k=2) then let u[i,k] := sin(phi[i,1])*sin(phi[i,2]); else let u[i,k] := cos(phi[i,2]);}
+}
+}
+
+for {k in K}
+{for {i in A} 
+{let x0[i,k] :=  -radius*u[i,k];}
+}

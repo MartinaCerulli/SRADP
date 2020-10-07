@@ -1,0 +1,36 @@
+#########################################################
+#########   Aircraft deconfliction in 3 dim   ###########
+### n aircraft over a sphere, flying with velocity v ####
+#########################################################
+
+param dim := 3;
+param n := 6; 
+param radius := 3;
+let {i in A} v[i] := 4;
+
+let phi[1,1] := 0.167964352317;
+let phi[1,2] := 0.2452164704;
+let phi[2,1] := 0.696155085417;
+let phi[2,2] := 0.786549734797;
+let phi[3,1] := 0.797970770658;
+let phi[3,2] := 0.804132382236;
+let phi[4,1] := 0.937016693955;
+let phi[4,2] := 0.956619567445;
+let phi[5,1] := 1.04821837499;
+let phi[5,2] := 1.29015400455;
+let phi[6,1] := 1.3533790799;
+let phi[6,2] := 1.39219516333;
+
+
+for {k in K}
+{for {i in A} 
+{if (k=1) then let u[i,k] := cos(phi[i,1])*sin(phi[i,2]); 
+else {if (k=2) then let u[i,k] := sin(phi[i,1])*sin(phi[i,2]); else let u[i,k] := cos(phi[i,2]);}
+}
+}
+
+for {k in K}
+{for {i in A} 
+{let x0[i,k] :=  -radius*u[i,k];}
+}
+

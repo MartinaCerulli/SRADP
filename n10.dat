@@ -1,0 +1,45 @@
+#########################################################
+#########   Aircraft deconfliction in 3 dim   ###########
+### n aircraft over a sphere, flying with velocity v ####
+#########################################################
+
+param dim := 3;
+param n := 10; # number of aircraft
+param radius := 6;
+let {i in 1..n} v[i] := 4;
+
+
+let phi[1,1] := 0.0170791910895;
+let phi[1,2] := 0.107328119067;
+let phi[2,1] := 0.396367866065;
+let phi[2,2] := 0.544004618373;
+let phi[3,1] := 0.590360679877;
+let phi[3,2] := 0.626961734104;
+let phi[4,1] := 0.768592532774;
+let phi[4,2] := 1.0259154268;
+let phi[5,1] := 1.20273525261;
+let phi[5,2] := 1.21225209918;
+let phi[6,1] := 1.25209408383;
+let phi[6,2] := 1.2566089171;
+let phi[7,1] := 1.28461929826;
+let phi[7,2] := 1.33186558225;
+let phi[8,1] := 1.35543981821;
+let phi[8,2] := 1.38924591742;
+let phi[9,1] := 1.42696611597;
+let phi[9,2] := 1.44759413145;
+let phi[10,1] := 1.4958803391;
+let phi[10,2] := 1.49685589313;
+
+
+
+for {k in K}
+{for {i in A} 
+{if (k=1) then let u[i,k] := cos(phi[i,1])*sin(phi[i,2]); 
+else {if (k=2) then let u[i,k] := sin(phi[i,1])*sin(phi[i,2]); else let u[i,k] := cos(phi[i,2]);}
+}
+}
+
+for {k in K}
+{for {i in A} 
+{let x0[i,k] :=  -radius*u[i,k];}
+}
