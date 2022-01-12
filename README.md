@@ -1,4 +1,4 @@
-This repository contains benchmarking instances for the aircraft deconfliction problem via subliminal speed regulation (SRADP) in 3 dimensions, presented here https://hal.archives-ouvertes.fr/hal-02869699v1.
+This repository contains benchmarking instances for the aircraft deconfliction problem via subliminal speed regulation (SRADP) in 3 dimensions, presented here https://doi.org/10.1007/s10898-021-00997-1.
 Given a set of aircraft sharing the same airspace, the SRADP consists of minimizing the total speed changes (within specific control bounds) needed to satisfy a minimum safety distance for each pair of aircraft in a given time horizon. An important assumption is that changes occur instantaneously and that the new speeds remain constant in the time horizon. Specifically, given a constant speed for every aircraft, new optimal constant speeds satisfying the safety constraints are decided. 
 
 The SRADP is often formulated in two-dimensional space, assuming that aircraft fly within a fixed altitude layer. For instances of SRADP in two dimension see https://github.com/ReyHijazi/Conflict_Resolution .
